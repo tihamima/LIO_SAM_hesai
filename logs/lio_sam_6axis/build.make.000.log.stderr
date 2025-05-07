@@ -1,0 +1,321 @@
+[01m[K/home/tihami/LIO_SAM_hesai/src/LIO-SAM-6AXIS/src/simpleGpsOdom.cpp:[m[K In member function ‘[01m[Kvoid GNSSOdom::GNSSCB(const NavSatFixConstPtr&)[m[K’:
+[01m[K/home/tihami/LIO_SAM_hesai/src/LIO-SAM-6AXIS/src/simpleGpsOdom.cpp:36:12:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[Kgps_time[m[K’ [[01;35m[K-Wunused-variable[m[K]
+   36 |     double [01;35m[Kgps_time[m[K = msg->header.stamp.toSec();
+      |            [01;35m[K^~~~~~~~[m[K
+In file included from [01m[K/usr/include/boost/preprocessor/tuple/elem.hpp:23[m[K,
+                 from [01m[K/usr/include/boost/preprocessor/arithmetic/add.hpp:21[m[K,
+                 from [01m[K/usr/include/boost/mpl/aux_/preprocessor/def_params_tail.hpp:66[m[K,
+                 from [01m[K/usr/include/boost/mpl/aux_/na_spec.hpp:28[m[K,
+                 from [01m[K/usr/include/boost/mpl/next_prior.hpp:18[m[K,
+                 from [01m[K/usr/include/boost/mpl/next.hpp:17[m[K,
+                 from [01m[K/usr/include/boost/mpl/list/aux_/push_front.hpp:18[m[K,
+                 from [01m[K/usr/include/boost/mpl/list/list0.hpp:19[m[K,
+                 from [01m[K/usr/include/boost/mpl/list/list10.hpp:18[m[K,
+                 from [01m[K/usr/include/boost/mpl/list/list20.hpp:18[m[K,
+                 from [01m[K/usr/include/boost/mpl/list.hpp:36[m[K,
+                 from [01m[K/usr/include/boost/math/policies/policy.hpp:9[m[K,
+                 from [01m[K/usr/include/boost/math/policies/error_handling.hpp:21[m[K,
+                 from [01m[K/usr/include/boost/math/special_functions/round.hpp:14[m[K,
+                 from [01m[K/opt/ros/noetic/include/ros/time.h:58[m[K,
+                 from [01m[K/opt/ros/noetic/include/ros/ros.h:38[m[K,
+                 from [01m[K/home/tihami/LIO_SAM_hesai/src/LIO-SAM-6AXIS/include/utility.h:6[m[K,
+                 from [01m[K/home/tihami/LIO_SAM_hesai/src/LIO-SAM-6AXIS/src/imageProjection.cpp:1[m[K:
+[01m[K/home/tihami/LIO_SAM_hesai/src/LIO-SAM-6AXIS/src/imageProjection.cpp:15:45:[m[K [01;35m[Kwarning: [m[K‘[01m[Kusing uint16_t = uint16_t[m[K’ is deprecated: use std::uint16_t instead of pcl::uint16_t [[01;35m[K-Wdeprecated-declarations[m[K]
+   15 |                                            ([01;35m[Kuint16_t[m[K, ring, ring)(float, time, time)
+      |                                             [01;35m[K^~~~~~~~[m[K
+In file included from [01m[K/usr/include/pcl-1.10/pcl/PCLHeader.h:10[m[K,
+                 from [01m[K/usr/include/pcl-1.10/pcl/point_cloud.h:47[m[K,
+                 from [01m[K/home/tihami/LIO_SAM_hesai/src/LIO-SAM-6AXIS/include/utility.h:20[m[K,
+                 from [01m[K/home/tihami/LIO_SAM_hesai/src/LIO-SAM-6AXIS/src/imageProjection.cpp:1[m[K:
+[01m[K/usr/include/pcl-1.10/pcl/pcl_macros.h:94:9:[m[K [01;36m[Knote: [m[Kdeclared here
+   94 |   using [01;36m[Kuint16_t[m[K [[deprecated("use std::uint16_t instead of pcl::uint16_t")]] = std::uint16_t;
+      |         [01;36m[K^~~~~~~~[m[K
+In file included from [01m[K/usr/include/boost/preprocessor/tuple/elem.hpp:23[m[K,
+                 from [01m[K/usr/include/boost/preprocessor/arithmetic/add.hpp:21[m[K,
+                 from [01m[K/usr/include/boost/mpl/aux_/preprocessor/def_params_tail.hpp:66[m[K,
+                 from [01m[K/usr/include/boost/mpl/aux_/na_spec.hpp:28[m[K,
+                 from [01m[K/usr/include/boost/mpl/next_prior.hpp:18[m[K,
+                 from [01m[K/usr/include/boost/mpl/next.hpp:17[m[K,
+                 from [01m[K/usr/include/boost/mpl/list/aux_/push_front.hpp:18[m[K,
+                 from [01m[K/usr/include/boost/mpl/list/list0.hpp:19[m[K,
+                 from [01m[K/usr/include/boost/mpl/list/list10.hpp:18[m[K,
+                 from [01m[K/usr/include/boost/mpl/list/list20.hpp:18[m[K,
+                 from [01m[K/usr/include/boost/mpl/list.hpp:36[m[K,
+                 from [01m[K/usr/include/boost/math/policies/policy.hpp:9[m[K,
+                 from [01m[K/usr/include/boost/math/policies/error_handling.hpp:21[m[K,
+                 from [01m[K/usr/include/boost/math/special_functions/round.hpp:14[m[K,
+                 from [01m[K/opt/ros/noetic/include/ros/time.h:58[m[K,
+                 from [01m[K/opt/ros/noetic/include/ros/ros.h:38[m[K,
+                 from [01m[K/home/tihami/LIO_SAM_hesai/src/LIO-SAM-6AXIS/include/utility.h:6[m[K,
+                 from [01m[K/home/tihami/LIO_SAM_hesai/src/LIO-SAM-6AXIS/src/imageProjection.cpp:1[m[K:
+[01m[K/home/tihami/LIO_SAM_hesai/src/LIO-SAM-6AXIS/src/imageProjection.cpp:33:44:[m[K [01;35m[Kwarning: [m[K‘[01m[Kusing uint16_t = uint16_t[m[K’ is deprecated: use std::uint16_t instead of pcl::uint16_t [[01;35m[K-Wdeprecated-declarations[m[K]
+   33 |                                           ([01;35m[Kuint16_t[m[K, ring, ring)
+      |                                            [01;35m[K^~~~~~~~[m[K
+In file included from [01m[K/usr/include/pcl-1.10/pcl/PCLHeader.h:10[m[K,
+                 from [01m[K/usr/include/pcl-1.10/pcl/point_cloud.h:47[m[K,
+                 from [01m[K/home/tihami/LIO_SAM_hesai/src/LIO-SAM-6AXIS/include/utility.h:20[m[K,
+                 from [01m[K/home/tihami/LIO_SAM_hesai/src/LIO-SAM-6AXIS/src/imageProjection.cpp:1[m[K:
+[01m[K/usr/include/pcl-1.10/pcl/pcl_macros.h:94:9:[m[K [01;36m[Knote: [m[Kdeclared here
+   94 |   using [01;36m[Kuint16_t[m[K [[deprecated("use std::uint16_t instead of pcl::uint16_t")]] = std::uint16_t;
+      |         [01;36m[K^~~~~~~~[m[K
+In file included from [01m[K/usr/include/boost/preprocessor/tuple/elem.hpp:23[m[K,
+                 from [01m[K/usr/include/boost/preprocessor/arithmetic/add.hpp:21[m[K,
+                 from [01m[K/usr/include/boost/mpl/aux_/preprocessor/def_params_tail.hpp:66[m[K,
+                 from [01m[K/usr/include/boost/mpl/aux_/na_spec.hpp:28[m[K,
+                 from [01m[K/usr/include/boost/mpl/next_prior.hpp:18[m[K,
+                 from [01m[K/usr/include/boost/mpl/next.hpp:17[m[K,
+                 from [01m[K/usr/include/boost/mpl/list/aux_/push_front.hpp:18[m[K,
+                 from [01m[K/usr/include/boost/mpl/list/list0.hpp:19[m[K,
+                 from [01m[K/usr/include/boost/mpl/list/list10.hpp:18[m[K,
+                 from [01m[K/usr/include/boost/mpl/list/list20.hpp:18[m[K,
+                 from [01m[K/usr/include/boost/mpl/list.hpp:36[m[K,
+                 from [01m[K/usr/include/boost/math/policies/policy.hpp:9[m[K,
+                 from [01m[K/usr/include/boost/math/policies/error_handling.hpp:21[m[K,
+                 from [01m[K/usr/include/boost/math/special_functions/round.hpp:14[m[K,
+                 from [01m[K/opt/ros/noetic/include/ros/time.h:58[m[K,
+                 from [01m[K/opt/ros/noetic/include/ros/ros.h:38[m[K,
+                 from [01m[K/home/tihami/LIO_SAM_hesai/src/LIO-SAM-6AXIS/include/utility.h:6[m[K,
+                 from [01m[K/home/tihami/LIO_SAM_hesai/src/LIO-SAM-6AXIS/src/imageProjection.cpp:1[m[K:
+[01m[K/home/tihami/LIO_SAM_hesai/src/LIO-SAM-6AXIS/src/imageProjection.cpp:54:44:[m[K [01;35m[Kwarning: [m[K‘[01m[Kusing uint16_t = uint16_t[m[K’ is deprecated: use std::uint16_t instead of pcl::uint16_t [[01;35m[K-Wdeprecated-declarations[m[K]
+   54 |                                           ([01;35m[Kuint16_t[m[K, reflectivity, reflectivity)
+      |                                            [01;35m[K^~~~~~~~[m[K
+In file included from [01m[K/usr/include/pcl-1.10/pcl/PCLHeader.h:10[m[K,
+                 from [01m[K/usr/include/pcl-1.10/pcl/point_cloud.h:47[m[K,
+                 from [01m[K/home/tihami/LIO_SAM_hesai/src/LIO-SAM-6AXIS/include/utility.h:20[m[K,
+                 from [01m[K/home/tihami/LIO_SAM_hesai/src/LIO-SAM-6AXIS/src/imageProjection.cpp:1[m[K:
+[01m[K/usr/include/pcl-1.10/pcl/pcl_macros.h:94:9:[m[K [01;36m[Knote: [m[Kdeclared here
+   94 |   using [01;36m[Kuint16_t[m[K [[deprecated("use std::uint16_t instead of pcl::uint16_t")]] = std::uint16_t;
+      |         [01;36m[K^~~~~~~~[m[K
+In file included from [01m[K/usr/include/boost/preprocessor/tuple/elem.hpp:23[m[K,
+                 from [01m[K/usr/include/boost/preprocessor/arithmetic/add.hpp:21[m[K,
+                 from [01m[K/usr/include/boost/mpl/aux_/preprocessor/def_params_tail.hpp:66[m[K,
+                 from [01m[K/usr/include/boost/mpl/aux_/na_spec.hpp:28[m[K,
+                 from [01m[K/usr/include/boost/mpl/next_prior.hpp:18[m[K,
+                 from [01m[K/usr/include/boost/mpl/next.hpp:17[m[K,
+                 from [01m[K/usr/include/boost/mpl/list/aux_/push_front.hpp:18[m[K,
+                 from [01m[K/usr/include/boost/mpl/list/list0.hpp:19[m[K,
+                 from [01m[K/usr/include/boost/mpl/list/list10.hpp:18[m[K,
+                 from [01m[K/usr/include/boost/mpl/list/list20.hpp:18[m[K,
+                 from [01m[K/usr/include/boost/mpl/list.hpp:36[m[K,
+                 from [01m[K/usr/include/boost/math/policies/policy.hpp:9[m[K,
+                 from [01m[K/usr/include/boost/math/policies/error_handling.hpp:21[m[K,
+                 from [01m[K/usr/include/boost/math/special_functions/round.hpp:14[m[K,
+                 from [01m[K/opt/ros/noetic/include/ros/time.h:58[m[K,
+                 from [01m[K/opt/ros/noetic/include/ros/ros.h:38[m[K,
+                 from [01m[K/home/tihami/LIO_SAM_hesai/src/LIO-SAM-6AXIS/include/utility.h:6[m[K,
+                 from [01m[K/home/tihami/LIO_SAM_hesai/src/LIO-SAM-6AXIS/src/imageProjection.cpp:1[m[K:
+[01m[K/home/tihami/LIO_SAM_hesai/src/LIO-SAM-6AXIS/src/imageProjection.cpp:55:44:[m[K [01;35m[Kwarning: [m[K‘[01m[Kusing uint8_t = uint8_t[m[K’ is deprecated: use std::uint8_t instead of pcl::uint8_t [[01;35m[K-Wdeprecated-declarations[m[K]
+   55 |                                           ([01;35m[Kuint8_t[m[K, ring, ring)
+      |                                            [01;35m[K^~~~~~~[m[K
+In file included from [01m[K/usr/include/pcl-1.10/pcl/PCLHeader.h:10[m[K,
+                 from [01m[K/usr/include/pcl-1.10/pcl/point_cloud.h:47[m[K,
+                 from [01m[K/home/tihami/LIO_SAM_hesai/src/LIO-SAM-6AXIS/include/utility.h:20[m[K,
+                 from [01m[K/home/tihami/LIO_SAM_hesai/src/LIO-SAM-6AXIS/src/imageProjection.cpp:1[m[K:
+[01m[K/usr/include/pcl-1.10/pcl/pcl_macros.h:92:9:[m[K [01;36m[Knote: [m[Kdeclared here
+   92 |   using [01;36m[Kuint8_t[m[K [[deprecated("use std::uint8_t instead of pcl::uint8_t")]] = std::uint8_t;
+      |         [01;36m[K^~~~~~~[m[K
+In file included from [01m[K/usr/include/boost/preprocessor/tuple/elem.hpp:23[m[K,
+                 from [01m[K/usr/include/boost/preprocessor/arithmetic/add.hpp:21[m[K,
+                 from [01m[K/usr/include/boost/mpl/aux_/preprocessor/def_params_tail.hpp:66[m[K,
+                 from [01m[K/usr/include/boost/mpl/aux_/na_spec.hpp:28[m[K,
+                 from [01m[K/usr/include/boost/mpl/next_prior.hpp:18[m[K,
+                 from [01m[K/usr/include/boost/mpl/next.hpp:17[m[K,
+                 from [01m[K/usr/include/boost/mpl/list/aux_/push_front.hpp:18[m[K,
+                 from [01m[K/usr/include/boost/mpl/list/list0.hpp:19[m[K,
+                 from [01m[K/usr/include/boost/mpl/list/list10.hpp:18[m[K,
+                 from [01m[K/usr/include/boost/mpl/list/list20.hpp:18[m[K,
+                 from [01m[K/usr/include/boost/mpl/list.hpp:36[m[K,
+                 from [01m[K/usr/include/boost/math/policies/policy.hpp:9[m[K,
+                 from [01m[K/usr/include/boost/math/policies/error_handling.hpp:21[m[K,
+                 from [01m[K/usr/include/boost/math/special_functions/round.hpp:14[m[K,
+                 from [01m[K/opt/ros/noetic/include/ros/time.h:58[m[K,
+                 from [01m[K/opt/ros/noetic/include/ros/ros.h:38[m[K,
+                 from [01m[K/home/tihami/LIO_SAM_hesai/src/LIO-SAM-6AXIS/include/utility.h:6[m[K,
+                 from [01m[K/home/tihami/LIO_SAM_hesai/src/LIO-SAM-6AXIS/src/imageProjection.cpp:1[m[K:
+[01m[K/home/tihami/LIO_SAM_hesai/src/LIO-SAM-6AXIS/src/imageProjection.cpp:58:44:[m[K [01;35m[Kwarning: [m[K‘[01m[Kusing uint16_t = uint16_t[m[K’ is deprecated: use std::uint16_t instead of pcl::uint16_t [[01;35m[K-Wdeprecated-declarations[m[K]
+   58 |                                           ([01;35m[Kuint16_t[m[K, noise, noise)
+      |                                            [01;35m[K^~~~~~~~[m[K
+In file included from [01m[K/usr/include/pcl-1.10/pcl/PCLHeader.h:10[m[K,
+                 from [01m[K/usr/include/pcl-1.10/pcl/point_cloud.h:47[m[K,
+                 from [01m[K/home/tihami/LIO_SAM_hesai/src/LIO-SAM-6AXIS/include/utility.h:20[m[K,
+                 from [01m[K/home/tihami/LIO_SAM_hesai/src/LIO-SAM-6AXIS/src/imageProjection.cpp:1[m[K:
+[01m[K/usr/include/pcl-1.10/pcl/pcl_macros.h:94:9:[m[K [01;36m[Knote: [m[Kdeclared here
+   94 |   using [01;36m[Kuint16_t[m[K [[deprecated("use std::uint16_t instead of pcl::uint16_t")]] = std::uint16_t;
+      |         [01;36m[K^~~~~~~~[m[K
+In file included from [01m[K/usr/include/boost/preprocessor/tuple/elem.hpp:23[m[K,
+                 from [01m[K/usr/include/boost/preprocessor/arithmetic/add.hpp:21[m[K,
+                 from [01m[K/usr/include/boost/mpl/aux_/preprocessor/def_params_tail.hpp:66[m[K,
+                 from [01m[K/usr/include/boost/mpl/aux_/na_spec.hpp:28[m[K,
+                 from [01m[K/usr/include/boost/mpl/next_prior.hpp:18[m[K,
+                 from [01m[K/usr/include/boost/mpl/next.hpp:17[m[K,
+                 from [01m[K/usr/include/boost/mpl/list/aux_/push_front.hpp:18[m[K,
+                 from [01m[K/usr/include/boost/mpl/list/list0.hpp:19[m[K,
+                 from [01m[K/usr/include/boost/mpl/list/list10.hpp:18[m[K,
+                 from [01m[K/usr/include/boost/mpl/list/list20.hpp:18[m[K,
+                 from [01m[K/usr/include/boost/mpl/list.hpp:36[m[K,
+                 from [01m[K/usr/include/boost/math/policies/policy.hpp:9[m[K,
+                 from [01m[K/usr/include/boost/math/policies/error_handling.hpp:21[m[K,
+                 from [01m[K/usr/include/boost/math/special_functions/round.hpp:14[m[K,
+                 from [01m[K/opt/ros/noetic/include/ros/time.h:58[m[K,
+                 from [01m[K/opt/ros/noetic/include/ros/ros.h:38[m[K,
+                 from [01m[K/home/tihami/LIO_SAM_hesai/src/LIO-SAM-6AXIS/include/utility.h:6[m[K,
+                 from [01m[K/home/tihami/LIO_SAM_hesai/src/LIO-SAM-6AXIS/src/imageProjection.cpp:1[m[K:
+[01m[K/home/tihami/LIO_SAM_hesai/src/LIO-SAM-6AXIS/src/imageProjection.cpp:59:44:[m[K [01;35m[Kwarning: [m[K‘[01m[Kusing uint32_t = uint32_t[m[K’ is deprecated: use std::uint32_t instead of pcl::uint32_t [[01;35m[K-Wdeprecated-declarations[m[K]
+   59 |                                           ([01;35m[Kuint32_t[m[K, range, range)
+      |                                            [01;35m[K^~~~~~~~[m[K
+In file included from [01m[K/usr/include/pcl-1.10/pcl/PCLHeader.h:10[m[K,
+                 from [01m[K/usr/include/pcl-1.10/pcl/point_cloud.h:47[m[K,
+                 from [01m[K/home/tihami/LIO_SAM_hesai/src/LIO-SAM-6AXIS/include/utility.h:20[m[K,
+                 from [01m[K/home/tihami/LIO_SAM_hesai/src/LIO-SAM-6AXIS/src/imageProjection.cpp:1[m[K:
+[01m[K/usr/include/pcl-1.10/pcl/pcl_macros.h:96:9:[m[K [01;36m[Knote: [m[Kdeclared here
+   96 |   using [01;36m[Kuint32_t[m[K [[deprecated("use std::uint32_t instead of pcl::uint32_t")]] = std::uint32_t;
+      |         [01;36m[K^~~~~~~~[m[K
+[01m[K/home/tihami/LIO_SAM_hesai/src/LIO-SAM-6AXIS/src/imuPreintegration.cpp:[m[K In constructor ‘[01m[KTransformFusion::TransformFusion()[m[K’:
+[01m[K/home/tihami/LIO_SAM_hesai/src/LIO-SAM-6AXIS/src/imuPreintegration.cpp:49:37:[m[K [01;35m[Kwarning: [m[Kcatching polymorphic type ‘[01m[Ktf::TransformException[m[K’ {aka ‘[01m[Kclass tf2::TransformException[m[K’} by value [[01;35m[K-Wcatch-value=[m[K]
+   49 |       catch (tf::TransformException [01;35m[Kex[m[K) {
+      |                                     [01;35m[K^~[m[K
+[01m[K/home/tihami/LIO_SAM_hesai/src/LIO-SAM-6AXIS/src/dataSaver.cpp:[m[K In constructor ‘[01m[KDataSaver::DataSaver(std::string, std::string)[m[K’:
+[01m[K/home/tihami/LIO_SAM_hesai/src/LIO-SAM-6AXIS/src/dataSaver.cpp:21:8:[m[K [01;35m[Kwarning: [m[Kvariable ‘[01m[Kunused[m[K’ set but not used [[01;35m[K-Wunused-but-set-variable[m[K]
+   21 |   auto [01;35m[Kunused[m[K = system((std::string("exec rm -r ") + save_directory).c_str());
+      |        [01;35m[K^~~~~~[m[K
+[01m[K/home/tihami/LIO_SAM_hesai/src/LIO-SAM-6AXIS/src/dataSaver.cpp:[m[K In member function ‘[01m[Kvoid DataSaver::saveOptimizedVerticesTUM(gtsam::Values)[m[K’:
+[01m[K/home/tihami/LIO_SAM_hesai/src/LIO-SAM-6AXIS/src/dataSaver.cpp:29:21:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Ksize_t[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K-Wsign-compare[m[K]
+   29 |   for (int i = 0; [01;35m[Ki < _estimates.size()[m[K; i++) {
+      |                   [01;35m[K~~^~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/tihami/LIO_SAM_hesai/src/LIO-SAM-6AXIS/src/dataSaver.cpp:[m[K In member function ‘[01m[Kvoid DataSaver::setDir(std::string, std::string)[m[K’:
+[01m[K/home/tihami/LIO_SAM_hesai/src/LIO-SAM-6AXIS/src/dataSaver.cpp:48:8:[m[K [01;35m[Kwarning: [m[Kvariable ‘[01m[Kunused[m[K’ set but not used [[01;35m[K-Wunused-but-set-variable[m[K]
+   48 |   auto [01;35m[Kunused[m[K = system((std::string("exec rm -r ") + save_directory).c_str());
+      |        [01;35m[K^~~~~~[m[K
+[01m[K/home/tihami/LIO_SAM_hesai/src/LIO-SAM-6AXIS/src/dataSaver.cpp:[m[K In member function ‘[01m[Kvoid DataSaver::saveOdometryVerticesTUM(std::vector<nav_msgs::Odometry_<std::allocator<void> > >)[m[K’:
+[01m[K/home/tihami/LIO_SAM_hesai/src/LIO-SAM-6AXIS/src/dataSaver.cpp:140:21:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<nav_msgs::Odometry_<std::allocator<void> > >::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K-Wsign-compare[m[K]
+  140 |   for (int i = 0; [01;35m[Ki < keyframePosesOdom.size()[m[K; i++) {
+      |                   [01;35m[K~~^~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/tihami/LIO_SAM_hesai/src/LIO-SAM-6AXIS/src/dataSaver.cpp:[m[K In member function ‘[01m[Kvoid DataSaver::saveGraph(std::vector<nav_msgs::Odometry_<std::allocator<void> > >)[m[K’:
+[01m[K/home/tihami/LIO_SAM_hesai/src/LIO-SAM-6AXIS/src/dataSaver.cpp:171:21:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<nav_msgs::Odometry_<std::allocator<void> > >::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K-Wsign-compare[m[K]
+  171 |   for (int i = 0; [01;35m[Ki < keyframePosesOdom.size()[m[K; i++) {
+      |                   [01;35m[K~~^~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/tihami/LIO_SAM_hesai/src/LIO-SAM-6AXIS/src/dataSaver.cpp:173:12:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[Ktime[m[K’ [[01;35m[K-Wunused-variable[m[K]
+  173 |     double [01;35m[Ktime[m[K = odometry.header.stamp.toSec();
+      |            [01;35m[K^~~~[m[K
+[01m[K/home/tihami/LIO_SAM_hesai/src/LIO-SAM-6AXIS/src/dataSaver.cpp:[m[K In member function ‘[01m[Kvoid DataSaver::saveResultBag(std::vector<nav_msgs::Odometry_<std::allocator<void> > >, std::vector<sensor_msgs::PointCloud2_<std::allocator<void> > >)[m[K’:
+[01m[K/home/tihami/LIO_SAM_hesai/src/LIO-SAM-6AXIS/src/dataSaver.cpp:196:21:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<nav_msgs::Odometry_<std::allocator<void> > >::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K-Wsign-compare[m[K]
+  196 |   for (int i = 0; [01;35m[Ki < allOdometryVec.size()[m[K; i++) {
+      |                   [01;35m[K~~^~~~~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/tihami/LIO_SAM_hesai/src/LIO-SAM-6AXIS/src/dataSaver.cpp:202:21:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<sensor_msgs::PointCloud2_<std::allocator<void> > >::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K-Wsign-compare[m[K]
+  202 |   for (int i = 0; [01;35m[Ki < allResVec.size()[m[K; i++) {
+      |                   [01;35m[K~~^~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/tihami/LIO_SAM_hesai/src/LIO-SAM-6AXIS/src/dataSaver.cpp:[m[K In member function ‘[01m[Kvoid DataSaver::saveResultBag(std::vector<nav_msgs::Odometry_<std::allocator<void> > >, std::vector<sensor_msgs::PointCloud2_<std::allocator<void> > >, std::vector<geometry_msgs::TransformStamped_<std::allocator<void> > >)[m[K’:
+[01m[K/home/tihami/LIO_SAM_hesai/src/LIO-SAM-6AXIS/src/dataSaver.cpp:223:21:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<nav_msgs::Odometry_<std::allocator<void> > >::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K-Wsign-compare[m[K]
+  223 |   for (int i = 0; [01;35m[Ki < allOdometryVec.size()[m[K; i++) {
+      |                   [01;35m[K~~^~~~~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/tihami/LIO_SAM_hesai/src/LIO-SAM-6AXIS/src/dataSaver.cpp:[m[K In member function ‘[01m[Kvoid DataSaver::savePointCloudMap(std::vector<nav_msgs::Odometry_<std::allocator<void> > >, std::vector<boost::shared_ptr<pcl::PointCloud<pcl::PointXYZI> > >)[m[K’:
+[01m[K/home/tihami/LIO_SAM_hesai/src/LIO-SAM-6AXIS/src/dataSaver.cpp:382:29:[m[K [01;35m[Kwarning: [m[Kcatching polymorphic type ‘[01m[Kclass std::exception[m[K’ by value [[01;35m[K-Wcatch-value=[m[K]
+  382 |     } catch (std::exception [01;35m[Ke[m[K) {
+      |                             [01;35m[K^[m[K
+In file included from [01m[K/opt/ros/noetic/include/ros/ros.h:40[m[K,
+                 from [01m[K/opt/ros/noetic/include/pcl_conversions/pcl_conversions.h:42[m[K,
+                 from [01m[K/home/tihami/LIO_SAM_hesai/src/LIO-SAM-6AXIS/include/dataSaver.h:29[m[K,
+                 from [01m[K/home/tihami/LIO_SAM_hesai/src/LIO-SAM-6AXIS/src/dataSaver.cpp:5[m[K:
+[01m[K/home/tihami/LIO_SAM_hesai/src/LIO-SAM-6AXIS/src/dataSaver.cpp:383:17:[m[K [01;35m[Kwarning: [m[Ktoo many arguments for format [[01;35m[K-Wformat-extra-args[m[K]
+  383 |       ROS_ERROR([01;35m[K"SAVE PCD ERROR"[m[K, globalmap->points.size());
+      |                 [01;35m[K^~~~~~~~~~~~~~~~[m[K
+[01m[K/opt/ros/noetic/include/ros/console.h:351:165:[m[K [01;36m[Knote: [m[Kin definition of macro ‘[01m[KROSCONSOLE_PRINT_AT_LOCATION_WITH_FILTER[m[K’
+  351 |     ::ros::console::print(filter, __rosconsole_define_location__loc.logger_, __rosconsole_define_location__loc.level_, __FILE__, __LINE__, __ROSCONSOLE_FUNCTION__, [01;36m[K__VA_ARGS__[m[K)
+      |                                                                                                                                                                     [01;36m[K^~~~~~~~~~~[m[K
+[01m[K/opt/ros/noetic/include/ros/console.h:390:7:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KROSCONSOLE_PRINT_AT_LOCATION[m[K’
+  390 |       [01;36m[KROSCONSOLE_PRINT_AT_LOCATION[m[K(__VA_ARGS__); \
+      |       [01;36m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/opt/ros/noetic/include/ros/console.h:575:35:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KROS_LOG_COND[m[K’
+  575 | #define ROS_LOG(level, name, ...) [01;36m[KROS_LOG_COND[m[K(true, level, name, __VA_ARGS__)
+      |                                   [01;36m[K^~~~~~~~~~~~[m[K
+[01m[K/opt/ros/noetic/include/rosconsole/macros_generated.h:214:24:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KROS_LOG[m[K’
+  214 | #define ROS_ERROR(...) [01;36m[KROS_LOG[m[K(::ros::console::levels::Error, ROSCONSOLE_DEFAULT_NAME, __VA_ARGS__)
+      |                        [01;36m[K^~~~~~~[m[K
+[01m[K/home/tihami/LIO_SAM_hesai/src/LIO-SAM-6AXIS/src/dataSaver.cpp:383:7:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KROS_ERROR[m[K’
+  383 |       [01;36m[KROS_ERROR[m[K("SAVE PCD ERROR", globalmap->points.size());
+      |       [01;36m[K^~~~~~~~~[m[K
+[01m[K/home/tihami/LIO_SAM_hesai/src/LIO-SAM-6AXIS/src/dataSaver.cpp:388:25:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<pcl::PointXYZI, Eigen::aligned_allocator<pcl::PointXYZI> >::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K-Wsign-compare[m[K]
+  388 |       for (int j = 0; [01;35m[Kj < globalmap->points.size()[m[K; ++j) {
+      |                       [01;35m[K~~^~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/tihami/LIO_SAM_hesai/src/LIO-SAM-6AXIS/src/dataSaver.cpp:402:31:[m[K [01;35m[Kwarning: [m[Kcatching polymorphic type ‘[01m[Kclass std::exception[m[K’ by value [[01;35m[K-Wcatch-value=[m[K]
+  402 |       } catch (std::exception [01;35m[Ke[m[K) {
+      |                               [01;35m[K^[m[K
+In file included from [01m[K/opt/ros/noetic/include/ros/ros.h:40[m[K,
+                 from [01m[K/opt/ros/noetic/include/pcl_conversions/pcl_conversions.h:42[m[K,
+                 from [01m[K/home/tihami/LIO_SAM_hesai/src/LIO-SAM-6AXIS/include/dataSaver.h:29[m[K,
+                 from [01m[K/home/tihami/LIO_SAM_hesai/src/LIO-SAM-6AXIS/src/dataSaver.cpp:5[m[K:
+[01m[K/home/tihami/LIO_SAM_hesai/src/LIO-SAM-6AXIS/src/dataSaver.cpp:403:19:[m[K [01;35m[Kwarning: [m[Ktoo many arguments for format [[01;35m[K-Wformat-extra-args[m[K]
+  403 |         ROS_ERROR([01;35m[K"SAVE PCD ERROR"[m[K, globalmap->points.size());
+      |                   [01;35m[K^~~~~~~~~~~~~~~~[m[K
+[01m[K/opt/ros/noetic/include/ros/console.h:351:165:[m[K [01;36m[Knote: [m[Kin definition of macro ‘[01m[KROSCONSOLE_PRINT_AT_LOCATION_WITH_FILTER[m[K’
+  351 |     ::ros::console::print(filter, __rosconsole_define_location__loc.logger_, __rosconsole_define_location__loc.level_, __FILE__, __LINE__, __ROSCONSOLE_FUNCTION__, [01;36m[K__VA_ARGS__[m[K)
+      |                                                                                                                                                                     [01;36m[K^~~~~~~~~~~[m[K
+[01m[K/opt/ros/noetic/include/ros/console.h:390:7:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KROSCONSOLE_PRINT_AT_LOCATION[m[K’
+  390 |       [01;36m[KROSCONSOLE_PRINT_AT_LOCATION[m[K(__VA_ARGS__); \
+      |       [01;36m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/opt/ros/noetic/include/ros/console.h:575:35:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KROS_LOG_COND[m[K’
+  575 | #define ROS_LOG(level, name, ...) [01;36m[KROS_LOG_COND[m[K(true, level, name, __VA_ARGS__)
+      |                                   [01;36m[K^~~~~~~~~~~~[m[K
+[01m[K/opt/ros/noetic/include/rosconsole/macros_generated.h:214:24:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KROS_LOG[m[K’
+  214 | #define ROS_ERROR(...) [01;36m[KROS_LOG[m[K(::ros::console::levels::Error, ROSCONSOLE_DEFAULT_NAME, __VA_ARGS__)
+      |                        [01;36m[K^~~~~~~[m[K
+[01m[K/home/tihami/LIO_SAM_hesai/src/LIO-SAM-6AXIS/src/dataSaver.cpp:403:9:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KROS_ERROR[m[K’
+  403 |         [01;36m[KROS_ERROR[m[K("SAVE PCD ERROR", globalmap->points.size());
+      |         [01;36m[K^~~~~~~~~[m[K
+[01m[K/home/tihami/LIO_SAM_hesai/src/LIO-SAM-6AXIS/src/dataSaver.cpp:[m[K In member function ‘[01m[Kint DataSaver::saveKMLTrajectory(std::vector<Eigen::Matrix<double, 3, 1> >)[m[K’:
+[01m[K/home/tihami/LIO_SAM_hesai/src/LIO-SAM-6AXIS/src/dataSaver.cpp:511:21:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<Eigen::Matrix<double, 3, 1> >::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K-Wsign-compare[m[K]
+  511 |   for (int i = 0; [01;35m[Ki < lla_vec.size()[m[K; i++) {
+      |                   [01;35m[K~~^~~~~~~~~~~~~~~~[m[K
+[01m[K/home/tihami/LIO_SAM_hesai/src/LIO-SAM-6AXIS/src/mapOptmizationGps.cpp:[m[K In member function ‘[01m[Kbool mapOptimization::saveMapService(std_srvs::Empty::Request&, std_srvs::Empty::Response&)[m[K’:
+[01m[K/home/tihami/LIO_SAM_hesai/src/LIO-SAM-6AXIS/src/mapOptmizationGps.cpp:542:23:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::size_t[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K-Wsign-compare[m[K]
+  542 |     for (int i = 0; [01;35m[Ki < cloudKeyPoses6D->size()[m[K; ++i) {
+      |                     [01;35m[K~~^~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/tihami/LIO_SAM_hesai/src/LIO-SAM-6AXIS/src/mapOptmizationGps.cpp:[m[K In member function ‘[01m[Kbool mapOptimization::detectLoopClosureDistance(int*, int*)[m[K’:
+[01m[K/home/tihami/LIO_SAM_hesai/src/LIO-SAM-6AXIS/src/mapOptmizationGps.cpp:884:23:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::size_t[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K-Wsign-compare[m[K]
+  884 |     for (int i = 0; [01;35m[Ki < copy_cloudKeyPoses2D->size()[m[K; ++i) {
+      |                     [01;35m[K~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/tihami/LIO_SAM_hesai/src/LIO-SAM-6AXIS/src/mapOptmizationGps.cpp:912:34:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kstd::vector<double>::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} and ‘[01m[Kint[m[K’ [[01;35m[K-Wsign-compare[m[K]
+  912 |     if ([01;35m[KkeyframeDistances.size() >= loopKeyCur[m[K) {
+      |         [01;35m[K~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~[m[K
+[01m[K/home/tihami/LIO_SAM_hesai/src/LIO-SAM-6AXIS/src/mapOptmizationGps.cpp:[m[K In member function ‘[01m[Kvoid mapOptimization::extractForLoopClosure()[m[K’:
+[01m[K/home/tihami/LIO_SAM_hesai/src/LIO-SAM-6AXIS/src/mapOptmizationGps.cpp:1287:34:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kstd::size_t[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} and ‘[01m[Kint[m[K’ [[01;35m[K-Wsign-compare[m[K]
+ 1287 |       if ([01;35m[KcloudToExtract->size() <= surroundingKeyframeSize[m[K)
+      |           [01;35m[K~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+In file included from [01m[K/opt/ros/noetic/include/ros/ros.h:40[m[K,
+                 from [01m[K/opt/ros/noetic/include/pcl_conversions/pcl_conversions.h:42[m[K,
+                 from [01m[K/home/tihami/LIO_SAM_hesai/src/LIO-SAM-6AXIS/include/dataSaver.h:29[m[K,
+                 from [01m[K/home/tihami/LIO_SAM_hesai/src/LIO-SAM-6AXIS/src/mapOptmizationGps.cpp:19[m[K:
+[01m[K/home/tihami/LIO_SAM_hesai/src/LIO-SAM-6AXIS/src/mapOptmizationGps.cpp:[m[K In member function ‘[01m[Kvoid mapOptimization::addGPSFactor()[m[K’:
+[01m[K/home/tihami/LIO_SAM_hesai/src/LIO-SAM-6AXIS/src/mapOptmizationGps.cpp:1954:18:[m[K [01;35m[Kwarning: [m[Kformat ‘[01m[K%d[m[K’ expects argument of type ‘[01m[Kint[m[K’, but argument 8 has type ‘[01m[Kstd::vector<gtsam::GPSFactor>::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K-Wformat=[m[K]
+ 1954 |         ROS_INFO([01;35m[K"Accumulated gps factor: %d"[m[K, [32m[KkeyframeGPSfactor.size()[m[K);
+      |                  [01;35m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K  [32m[K~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+      |                                                                      [32m[K|[m[K
+      |                                                                      [32m[Kstd::vector<gtsam::GPSFactor>::size_type {aka long unsigned int}[m[K
+[01m[K/opt/ros/noetic/include/ros/console.h:351:165:[m[K [01;36m[Knote: [m[Kin definition of macro ‘[01m[KROSCONSOLE_PRINT_AT_LOCATION_WITH_FILTER[m[K’
+  351 |     ::ros::console::print(filter, __rosconsole_define_location__loc.logger_, __rosconsole_define_location__loc.level_, __FILE__, __LINE__, __ROSCONSOLE_FUNCTION__, [01;36m[K__VA_ARGS__[m[K)
+      |                                                                                                                                                                     [01;36m[K^~~~~~~~~~~[m[K
+[01m[K/opt/ros/noetic/include/ros/console.h:390:7:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KROSCONSOLE_PRINT_AT_LOCATION[m[K’
+  390 |       [01;36m[KROSCONSOLE_PRINT_AT_LOCATION[m[K(__VA_ARGS__); \
+      |       [01;36m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/opt/ros/noetic/include/ros/console.h:575:35:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KROS_LOG_COND[m[K’
+  575 | #define ROS_LOG(level, name, ...) [01;36m[KROS_LOG_COND[m[K(true, level, name, __VA_ARGS__)
+      |                                   [01;36m[K^~~~~~~~~~~~[m[K
+[01m[K/opt/ros/noetic/include/rosconsole/macros_generated.h:110:23:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KROS_LOG[m[K’
+  110 | #define ROS_INFO(...) [01;36m[KROS_LOG[m[K(::ros::console::levels::Info, ROSCONSOLE_DEFAULT_NAME, __VA_ARGS__)
+      |                       [01;36m[K^~~~~~~[m[K
+[01m[K/home/tihami/LIO_SAM_hesai/src/LIO-SAM-6AXIS/src/mapOptmizationGps.cpp:1954:9:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KROS_INFO[m[K’
+ 1954 |         [01;36m[KROS_INFO[m[K("Accumulated gps factor: %d", keyframeGPSfactor.size());
+      |         [01;36m[K^~~~~~~~[m[K
+[01m[K/home/tihami/LIO_SAM_hesai/src/LIO-SAM-6AXIS/src/mapOptmizationGps.cpp:1954:44:[m[K [01;36m[Knote: [m[Kformat string is defined here
+ 1954 |         ROS_INFO("Accumulated gps factor: [01;36m[K%d[m[K", keyframeGPSfactor.size());
+      |                                           [01;36m[K~^[m[K
+      |                                            [01;36m[K|[m[K
+      |                                            [01;36m[Kint[m[K
+      |                                           [32m[K%ld[m[K
+[01m[K/home/tihami/LIO_SAM_hesai/src/LIO-SAM-6AXIS/src/mapOptmizationGps.cpp:1960:27:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<gtsam::GPSFactor>::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K-Wsign-compare[m[K]
+ 1960 |         for (int i = 0; [01;35m[Ki < keyframeGPSfactor.size()[m[K; ++i) {
+      |                         [01;35m[K~~^~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/tihami/LIO_SAM_hesai/src/LIO-SAM-6AXIS/src/mapOptmizationGps.cpp:[m[K In member function ‘[01m[Kvoid mapOptimization::publishFrames()[m[K’:
+[01m[K/home/tihami/LIO_SAM_hesai/src/LIO-SAM-6AXIS/src/mapOptmizationGps.cpp:2369:31:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::size_t[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K-Wsign-compare[m[K]
+ 2369 |       if ([01;35m[KlastSLAMInfoPubSize != cloudKeyPoses6D->size()[m[K) {
+      |           [01;35m[K~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~[m[K

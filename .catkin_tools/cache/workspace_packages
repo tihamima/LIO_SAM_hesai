@@ -1,0 +1,5 @@
+_workspace_packages=( ${(Q)"${(z)$(<<\EO:_workspace_packages
+'lio_sam_6axis' 'rviz_satellite'
+EO:_workspace_packages
+)}"} )
+_workspace_cache_file_path='/home/tihami/LIO_SAM_hesai/.catkin_tools/cache'

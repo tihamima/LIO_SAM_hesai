@@ -1,0 +1,23 @@
+{
+  "configurations": [
+    {
+      "browse": {
+        "databaseFilename": "${default}",
+        "limitSymbolsToIncludedHeaders": false
+      },
+      "includePath": [
+        "/home/tihami/LIO_SAM_hesai/devel/include/**",
+        "/opt/ros/noetic/include/**",
+        "/home/tihami/data_management/src/imu_lidar_writer/include/**",
+        "/home/tihami/LIO_SAM_hesai/src/LIO-SAM-6AXIS/include/**",
+        "/usr/include/**"
+      ],
+      "name": "ROS",
+      "intelliSenseMode": "gcc-x64",
+      "compilerPath": "/usr/bin/gcc",
+      "cStandard": "gnu11",
+      "cppStandard": "c++14"
+    }
+  ],
+  "version": 4
+}
