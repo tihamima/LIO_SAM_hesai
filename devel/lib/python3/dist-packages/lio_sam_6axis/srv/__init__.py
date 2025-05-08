@@ -1,1 +1,0 @@
-/home/tihami/LIO_SAM_hesai/devel/.private/lio_sam_6axis/lib/python3/dist-packages/lio_sam_6axis/srv/__init__.py
