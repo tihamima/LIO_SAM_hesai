@@ -1,3 +1,10 @@
 build/
 devel/
 logs/
+
+.ros/
+install/
+*.bag
+*.pcap
+*.log
+.vscode/
