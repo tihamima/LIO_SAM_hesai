@@ -1,7 +1,7 @@
 <launch>
     <arg name="project" default="lio_sam_6axis"/>
     <!-- <arg name="bag_path" default="/media/xchu/e81eaf80-d92c-413a-a503-1c9b35b19963/home/xchu/data/hkust/outdoors/hkust_20201105full.bag"/> -->
-    <arg name="bag_path" default="/home/tihami/Downloads/LIO_SAM_walking_datasets/hkust_20201105full_correct2.bag"/>
+    <arg name="bag_path" default="/media/tihami/05150P129/LIO_SAM_walking_datasets/hkust_20201105full_correct2.bag"/>
     <arg name="sequence" default="hkust_campus"/>
 
     <!--set your own Parameters -->
