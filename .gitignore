@@ -7,5 +7,7 @@ install/
 *.bag
 *.pcap
 *.log
+*.pcd
 .vscode/
+src/LIO-SAM-6AXIS/data
 *.pcd

@@ -1,11 +1,17 @@
 <launch>
     <arg name="project" default="lio_sam_6axis"/>
     <!-- <arg name="bag_path" default="/media/tihami/05150P129/bag/OnFootAcquisition2OutsideInside/merged_OnFootAcquisition2OutsideInside.bag"/> -->
-    <arg name="bag_path" default="/media/tihami/05150P129/bag/OnFootAcquisition1Outside/merged_OnFootAcquisition1Outside.bag"/>
+    <!-- <arg name="bag_path" default="/media/tihami/05150P129/bag/OnFootAcquisition1Outside/merged_OnFootAcquisition1Outside.bag"/>  -->
+    <!-- <arg name="bag_path" default="/media/tihami/05150P129/bag/Cycle_250507_155315_136SN999/merged_Cycle_250507_155315_136SN999.bag"/> -->
+    <arg name="bag_path" default="/media/tihami/05150P129/bag/Cycle_250512_114517_136SN999/merged_Cycle_250512_114517_136SN999.bag"/>
 
     <!-- <arg name="bag_path" default="/home/tihami/Downloads/LIO_SAM_walking_datasets/hkust_20201105full_correct2.bag"/> -->
     <!-- <arg name="sequence" default="my_sequence"/> -->
-    <arg name="sequence" default="Outside"/>
+    <!-- <arg name="sequence" default="Outside"/> -->
+    <!-- <arg name="sequence" default="OnFootAcquisition2OutsideInside"/> -->
+    <!-- <arg name="sequence" default=" Cycle_250507_155315_136SN999"/> -->
+    <arg name="sequence" default="Cycle_250512_114517_136SN999"/>
+
 
     <!--set your own Parameters -->
     <!--    <rosparam file="$(find lio_sam_6axis)/config/params_ouster.yaml" command="load"/>-->

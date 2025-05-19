@@ -11,16 +11,23 @@ plat_data_pair_list = [
     # ('lp', 'geocue')
     # ('hkust', 'campus_day_ouster128_bodyimu')
     # ('my_data', 'my_sequence')
-    ('my_data', 'Outside')
+    # ('my_data', 'Outside')
+    # ('my_data', 'OnFootAcquisition2OutsideInside')
+    # ('my_data', 'Cycle_250507_155315_136SN999')
+    ('my_data', 'Cycle_250512_114517_136SN999')
+
 ]
 
-bag_path_download = '/media/tihami/05150P129/bag/OnFootAcquisition1Outside'
-# bag_path_download = '/home/tihami/data_management/bag/OnFootAcquisition2OutsideInside'
+# bag_path_download = '/media/tihami/05150P129/bag/OnFootAcquisition1Outside'
+# bag_path_download = '/media/tihami/05150P129/bag/OnFootAcquisition2OutsideInside'
+# bag_path_download = '/media/tihami/05150P129/bag/Cycle_250507_155315_136SN999'
+bag_path_download = '/media/tihami/05150P129/bag/Cycle_250512_114517_136SN999'
 
 bag_path_list = [
-    bag_path_download + 'merged_OnFootAcquisition1Outside.bag'
+    # bag_path_download + 'merged_OnFootAcquisition1Outside.bag'
     # bag_path_download + 'merged_OnFootAcquisition2OutsideInside.bag'
-
+    # bag_path_download + 'merged_Cycle_250507_155315_136SN999.bag'
+    bag_path_download + 'merged_Cycle_250512_114517_136SN999.bag'
     # bag_path_download + '20220226_campus_road_day_ref_lidar_bodyimu.bag'
 ]
 
