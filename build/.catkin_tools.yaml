@@ -1,6 +1,0 @@
-devel_space: /home/tihami/LIO_SAM_hesai/devel
-install: false
-install_space: /home/tihami/LIO_SAM_hesai/install
-profile: default
-source_space: /home/tihami/LIO_SAM_hesai/src
-workspace: /home/tihami/LIO_SAM_hesai

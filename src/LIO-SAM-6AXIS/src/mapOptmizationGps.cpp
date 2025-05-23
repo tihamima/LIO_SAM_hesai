@@ -91,6 +91,7 @@ class mapOptimization : public ParamServer {
   vector<pcl::PointCloud<PointType>::Ptr> cornerCloudKeyFrames;
   vector<pcl::PointCloud<PointType>::Ptr> surfCloudKeyFrames;
   vector<pcl::PointCloud<PointType>::Ptr> laserCloudRawKeyFrames;
+  vector<pcl::PointCloud<PointType>::Ptr> laserCloudAllRawKeyFrames;
 
   std::vector<Eigen::Matrix4d> keyframePosestrans;
   std::vector<nav_msgs::Odometry> keyframeRawOdom;
@@ -353,6 +354,9 @@ class mapOptimization : public ParamServer {
     pcl::fromROSMsg(msgIn->cloud_surface, *laserCloudSurfLast);
     pcl::fromROSMsg(msgIn->cloud_deskewed, *laserCloudRaw);  // deskewed data
 
+    // Print the number of points in cloud_deskewed
+    // ROS_INFO("Number of points in cloud_deskewed: %lu", laserCloudRaw->points.size());
+
     std::lock_guard<std::mutex> lock(mtx);
 
     static double timeLastProcessing = -1;
@@ -593,11 +597,11 @@ class mapOptimization : public ParamServer {
               << ", " << keyframeRawOdom.size() << " "
               << keyframePosesOdom.size() << " " << cloudKeyPoses3D->size()
               << " " << cloudKeyPoses6D->size() << std::endl;
-    std::cout << "key_cloud, surf, corner, raw_frame size: "
+    std::cout << "key_cloud, surf, corner, raw_frame size, all raw frame size: "
               << keyframePc.size() << " " << surfCloudKeyFrames.size() << " "
               << cornerCloudKeyFrames.size() << " "
-              << laserCloudRawKeyFrames.size() << std::endl;
-
+              << laserCloudRawKeyFrames.size() << " " 
+              << laserCloudAllRawKeyFrames.size() << std::endl;
 
     dataSaverPtr->saveTimes(keyframeTimes);
     dataSaverPtr->saveGraphGtsam(gtSAMgraph, isam, isamCurrentEstimate);
@@ -617,6 +621,8 @@ class mapOptimization : public ParamServer {
         new pcl::PointCloud<PointType>());
     pcl::PointCloud<PointType>::Ptr globalRawCloud(
         new pcl::PointCloud<PointType>());
+    pcl::PointCloud<PointType>::Ptr globalAllRawCloud(
+          new pcl::PointCloud<PointType>());
     pcl::PointCloud<PointType>::Ptr globalRawCloudDS(
         new pcl::PointCloud<PointType>());
 
@@ -627,8 +633,10 @@ class mapOptimization : public ParamServer {
                                                  &cloudKeyPoses6D->points[i]);
       *globalSurfCloud += *transformPointCloud(surfCloudKeyFrames[i],
                                                &cloudKeyPoses6D->points[i]);
-//      *globalRawCloud += *transformPointCloud(laserCloudRawKeyFrames[i],
-//                                              &cloudKeyPoses6D->points[i]);
+      *globalRawCloud += *transformPointCloud(laserCloudRawKeyFrames[i],
+                                              &cloudKeyPoses6D->points[i]);
+      *globalAllRawCloud += *transformPointCloud(laserCloudAllRawKeyFrames[i],
+                                              &cloudKeyPoses6D->points[i]);
       cout << "\r" << std::flush << "Processing feature cloud " << i << " of "
            << cloudKeyPoses6D->size() << " ...";
     }
@@ -643,16 +651,27 @@ class mapOptimization : public ParamServer {
                                    globalMapLeafSize);
     downSizeFilterSurf.filter(*globalSurfCloudDS);
 
+
+
+
+    std::cout << "global map size: " << globalAllRawCloud->size() << std::endl;
+    dataSaverPtr->savePointCloudMap(*globalAllRawCloud);
+
+
+
+
     //    downSizeFilterSurf.setInputCloud(globalRawCloud);
     //    downSizeFilterSurf.setLeafSize(globalMapLeafSize, globalMapLeafSize,
     //    globalMapLeafSize); downSizeFilterSurf.filter(*globalRawCloudDS);
 
     // save global point cloud map
-    *globalMapCloud += *globalCornerCloudDS;
-    *globalMapCloud += *globalSurfCloudDS;
+    // *globalMapCloud += *globalCornerCloudDS;
+    // *globalMapCloud += *globalSurfCloudDS;
+    //---*globalMapCloud += *globalCornerCloud;
+    //---*globalMapCloud += *globalSurfCloud;
     // *globalMapCloud += *globalRawCloudDS;
-    std::cout << "global map size: " << globalMapCloud->size() << std::endl;
-    dataSaverPtr->savePointCloudMap(*globalMapCloud);
+    //---std::cout << "global map size: " << globalMapCloud->size() << std::endl;
+    //---dataSaverPtr->savePointCloudMap(*globalMapCloud);
     mtx.unlock();
     // dataSaverPtr->savePointCloudMap(keyframePosesOdom,
     // laserCloudRawKeyFrames);
@@ -2092,15 +2111,19 @@ class mapOptimization : public ParamServer {
         new pcl::PointCloud<PointType>());
     pcl::PointCloud<PointType>::Ptr thislaserCloudRawKeyFrame(
         new pcl::PointCloud<PointType>());
+    pcl::PointCloud<PointType>::Ptr thislaserCloudAllRawKeyFrame(
+        new pcl::PointCloud<PointType>());
     pcl::copyPointCloud(*laserCloudCornerLastDS, *thisCornerKeyFrame);
     pcl::copyPointCloud(*laserCloudSurfLastDS, *thisSurfKeyFrame);
     pcl::copyPointCloud(*laserCloudRawDS, *thislaserCloudRawKeyFrame);
+    pcl::copyPointCloud(*laserCloudRaw, *thislaserCloudAllRawKeyFrame);
 
     // save key frame cloud
     cornerCloudKeyFrames.push_back(thisCornerKeyFrame);
     surfCloudKeyFrames.push_back(thisSurfKeyFrame);
     // if you want to save raw cloud
-    // laserCloudRawKeyFrames.push_back(thislaserCloudRawKeyFrame);
+    laserCloudRawKeyFrames.push_back(thislaserCloudRawKeyFrame);
+    laserCloudAllRawKeyFrames.push_back(thislaserCloudAllRawKeyFrame);
     keyframeCloudDeskewed.push_back(cloudInfo.cloud_deskewed);
     keyframeTimes.push_back(timeLaserInfoStamp.toSec());
 
@@ -2337,19 +2360,27 @@ class mapOptimization : public ParamServer {
       PointTypePose thisPose6D = trans2PointTypePose(transformTobeMapped);
       *cloudOut += *transformPointCloud(laserCloudCornerLastDS, &thisPose6D);
       *cloudOut += *transformPointCloud(laserCloudSurfLastDS, &thisPose6D);
+      ROS_INFO("Number of points in cloud_registered: %lu", cloudOut->points.size());
+
       publishCloud(pubRecentKeyFrame, cloudOut, timeLaserInfoStamp,
                    odometryFrame);
-    }
+                
+    } 
     // publish registered high-res raw cloud
     if (pubCloudRegisteredRaw.getNumSubscribers() != 0) {
+      ROS_INFO("Publishing cloud_registered___...");
       pcl::PointCloud<PointType>::Ptr cloudOut(
           new pcl::PointCloud<PointType>());
       pcl::fromROSMsg(cloudInfo.cloud_deskewed, *cloudOut);
       PointTypePose thisPose6D = trans2PointTypePose(transformTobeMapped);
       *cloudOut = *transformPointCloud(cloudOut, &thisPose6D);
+      ROS_INFO("Number of points in ___ cloud_registered: %lu", cloudOut->points.size());
+
       publishCloud(pubCloudRegisteredRaw, cloudOut, timeLaserInfoStamp,
                    odometryFrame);
     }
+
+
     if (pubCloudRaw.getNumSubscribers() != 0) {
       pcl::PointCloud<PointType>::Ptr cloudOut(
           new pcl::PointCloud<PointType>());

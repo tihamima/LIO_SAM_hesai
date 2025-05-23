@@ -10,12 +10,24 @@ plat_data_pair_list = [
     # my own data: ouster128+ stim300 + f9p(RTK)
     # ('lp', 'geocue')
     # ('hkust', 'campus_day_ouster128_bodyimu')
-    ('my_data', 'my_sequence')
+    # ('my_data', 'my_sequence')
+    # ('my_data', 'Outside')
+    # ('my_data', 'OnFootAcquisition2OutsideInside')
+    # ('my_data', 'Cycle_250507_155315_136SN999')
+    ('my_data', 'Cycle_250512_114517_136SN999')
+
 ]
 
-bag_path_download = '/home/tihami/data_management/bag/'
+# bag_path_download = '/media/tihami/05150P129/bag/OnFootAcquisition1Outside'
+# bag_path_download = '/media/tihami/05150P129/bag/OnFootAcquisition2OutsideInside'
+# bag_path_download = '/media/tihami/05150P129/bag/Cycle_250507_155315_136SN999'
+bag_path_download = '/media/tihami/05150P129/bag/Cycle_250512_114517_136SN999'
+
 bag_path_list = [
-    bag_path_download + 'merged.bag'
+    # bag_path_download + 'merged_OnFootAcquisition1Outside.bag'
+    # bag_path_download + 'merged_OnFootAcquisition2OutsideInside.bag'
+    # bag_path_download + 'merged_Cycle_250507_155315_136SN999.bag'
+    bag_path_download + 'merged_Cycle_250512_114517_136SN999.bag'
     # bag_path_download + '20220226_campus_road_day_ref_lidar_bodyimu.bag'
 ]
 
@@ -41,8 +53,6 @@ if __name__ == '__main__':
                       ' bag_path:=' + bag_path_dir + \
                       ' sequence:=' + pd_pair[1]
             # print("================run algorithm at %s sequence==================")
+
             print(command)
-            log_file = "debug.log"
-            print(command)
-            os.system(command + f" > {log_file} 2>&1")
-            print(f"Command output is logged in {log_file}")
+            os.system(command)

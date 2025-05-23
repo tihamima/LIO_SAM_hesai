@@ -1,5 +1,6 @@
 #include "utility.h"
 #include "lio_sam_6axis/cloud_info.h"
+#include "pcl/filters/impl/filter.hpp"
 
 struct VelodynePointXYZIRT {
     PCL_ADD_POINT4D
@@ -14,14 +15,28 @@ POINT_CLOUD_REGISTER_POINT_STRUCT (VelodynePointXYZIRT,
                                    (float, x, x)(float, y, y)(float, z, z)(float, intensity, intensity)
                                            (uint16_t, ring, ring)(float, time, time)
 )
+struct Velodyne_M1600PointXYZIRT {
+   PCL_ADD_POINT4D;
+  uint8_t intensity;
+  uint8_t ring;
+  uint32_t timestampSec;
+  uint32_t timestampNsec;
+  
+  EIGEN_MAKE_ALIGNED_OPERATOR_NEW
+} EIGEN_ALIGN16;
+POINT_CLOUD_REGISTER_POINT_STRUCT(
+    Velodyne_M1600PointXYZIRT,
+    (float, x, x)(float, y, y)(float, z, z)(uint8_t, intensity, intensity)(
+        uint8_t, ring, ring)(uint32_t, timestampSec, timestampSec)(uint32_t, timestampNsec, timestampNsec))
+
 
 struct PandarPointXYZIRT {
     PCL_ADD_POINT4D
 
     float intensity;
-    uint16_t ring; 
+    uint16_t ring;                      ///< laser ring number
     double timestamp;
-                         ///< laser ring number
+    
     EIGEN_MAKE_ALIGNED_OPERATOR_NEW // make sure our new allocators are aligned
 } EIGEN_ALIGN16;
 
@@ -30,9 +45,9 @@ POINT_CLOUD_REGISTER_POINT_STRUCT(PandarPointXYZIRT,
                                           (float, y, y)
                                           (float, z, z)
                                           (float, intensity, intensity)
+                                          
                                           (uint16_t, ring, ring)
                                           (double, timestamp, timestamp)
-                                          
 )
 
 struct OusterPointXYZIRT {
@@ -124,6 +139,7 @@ private:
     pcl::PointCloud<PointXYZIRT>::Ptr laserCloudIn;
     pcl::PointCloud<OusterPointXYZIRT>::Ptr tmpOusterCloudIn;
     pcl::PointCloud<PandarPointXYZIRT>::Ptr tmpPandarCloudIn;
+    pcl::PointCloud<Velodyne_M1600PointXYZIRT>::Ptr tmpM1600CloudIn;
     pcl::PointCloud<PointType>::Ptr fullCloud;
     pcl::PointCloud<PointType>::Ptr extractedCloud;
 
@@ -175,6 +191,7 @@ public:
         laserCloudIn.reset(new pcl::PointCloud<PointXYZIRT>());
         tmpOusterCloudIn.reset(new pcl::PointCloud<OusterPointXYZIRT>());
         tmpPandarCloudIn.reset(new pcl::PointCloud<PandarPointXYZIRT>());
+        tmpM1600CloudIn.reset(new pcl::PointCloud<Velodyne_M1600PointXYZIRT>());
         fullCloud.reset(new pcl::PointCloud<PointType>());
         extractedCloud.reset(new pcl::PointCloud<PointType>());
 
@@ -267,49 +284,68 @@ public:
         // convert cloud
         currentCloudMsg = std::move(cloudQueue.front());
         cloudQueue.pop_front();
-        
         if (sensor == SensorType::VELODYNE || sensor == SensorType::LIVOX) {
-        pcl::moveFromROSMsg(currentCloudMsg, *laserCloudIn);
+            pcl::moveFromROSMsg(currentCloudMsg, *laserCloudIn);
         } else if (sensor == SensorType::OUSTER) {
-        // Convert to Velodyne format
-        pcl::moveFromROSMsg(currentCloudMsg, *tmpOusterCloudIn);
-        laserCloudIn->points.resize(tmpOusterCloudIn->size());
-        laserCloudIn->is_dense = tmpOusterCloudIn->is_dense;
-        for (size_t i = 0; i < tmpOusterCloudIn->size(); i++) {
-            auto &src = tmpOusterCloudIn->points[i];
-            auto &dst = laserCloudIn->points[i];
-            dst.x = src.x;
-            dst.y = src.y;
-            dst.z = src.z;
-            dst.intensity = src.intensity;
-            dst.ring = src.ring;
-            //dst.time = src.t * 1e-9f;
-            dst.time = src.time;
-        }
-        } else if (sensor == SensorType::HESAI) {
-        // Convert to Velodyne format
-        pcl::moveFromROSMsg(currentCloudMsg, *tmpPandarCloudIn);
-        laserCloudIn->points.resize(tmpPandarCloudIn->size());
-        laserCloudIn->is_dense = tmpPandarCloudIn->is_dense;
-        double time_begin = tmpPandarCloudIn->points[0].timestamp;
-        for (size_t i = 0; i < tmpPandarCloudIn->size(); i++) {
-            auto &src = tmpPandarCloudIn->points[i];
-            auto &dst = laserCloudIn->points[i];
-            // please note that pandar frame: X Y Z ->  left back top
-            // so when you transform it, the newly X0 maybe -Y, Y0 = X, Z keep the same
-            // you can also multiply a rotation matrix
-            dst.x = src.y * -1;
-            dst.y = src.x;
-            //        dst.x = src.x;
-            //        dst.y = src.y;
-            dst.z = src.z;
-            dst.intensity = src.intensity;
-            dst.ring = src.ring;
-            dst.time = src.timestamp - time_begin; // s
-        }
+            // Convert to Velodyne format
+            pcl::moveFromROSMsg(currentCloudMsg, *tmpOusterCloudIn);
+            laserCloudIn->points.resize(tmpOusterCloudIn->size());
+            laserCloudIn->is_dense = tmpOusterCloudIn->is_dense;
+            for (size_t i = 0; i < tmpOusterCloudIn->size(); i++) {
+                auto &src = tmpOusterCloudIn->points[i];
+                auto &dst = laserCloudIn->points[i];
+                dst.x = src.x;
+                dst.y = src.y;
+                dst.z = src.z;
+                dst.intensity = src.intensity;
+                dst.ring = src.ring;
+                //dst.time = src.t * 1e-9f;
+//                dst.time = src.t;
+                dst.time = src.time;
+//                dst.time = (i % 2048) / 20480.0;
+            }
+        } else if (sensor == SensorType::VELODYNE_M1600) {
+               
+            pcl::moveFromROSMsg(currentCloudMsg, *tmpM1600CloudIn);
+            laserCloudIn->points.resize(tmpM1600CloudIn->size());
+            laserCloudIn->is_dense = tmpM1600CloudIn->is_dense;
+            double time_begins = tmpM1600CloudIn->points[0].timestampSec;
+            double time_beginns = tmpM1600CloudIn->points[0].timestampNsec;
+            double time_begin = time_begins + (time_beginns * 1e-9);
+            for (size_t i = 0; i < tmpM1600CloudIn->size(); i++) {
+                   auto &src = tmpM1600CloudIn->points[i];
+                   auto &dst = laserCloudIn->points[i];
+                   dst.x = src.x;
+                   dst.y = src.y*-1;
+                   dst.z = src.z*-1;
+                   dst.intensity = static_cast<float>(src.intensity);
+                   dst.ring = src.ring;
+                   double point_time = src.timestampSec + (src.timestampNsec * 1e-9);
+                   dst.time = point_time-time_begin;
+               }
+
+         }else if (sensor == SensorType::HESAI) {
+            // Convert to Velodyne format
+            pcl::moveFromROSMsg(currentCloudMsg, *tmpPandarCloudIn);
+            laserCloudIn->points.resize(tmpPandarCloudIn->size());
+            laserCloudIn->is_dense = tmpPandarCloudIn->is_dense;
+            double time_begin = tmpPandarCloudIn->points[0].timestamp;
+            for (size_t i = 0; i < tmpPandarCloudIn->size(); i++) {
+                auto &src = tmpPandarCloudIn->points[i];
+                auto &dst = laserCloudIn->points[i];
+                dst.x = src.y * -1;
+                dst.y = src.x;
+                //        dst.x = src.x;
+                //        dst.y = src.y;
+                dst.z = src.z;
+                dst.intensity = src.intensity;
+                dst.ring = src.ring;
+                //dst.tiSme = src.t * 1e-9f;
+                dst.time = src.timestamp - time_begin; // s
+            }
         } else {
-        ROS_ERROR_STREAM("Unknown sensor type: " << int(sensor));
-        ros::shutdown();
+            ROS_ERROR_STREAM("Unknown sensor type: " << int(sensor));
+            ros::shutdown();
         }
 
         // get timestamp
@@ -323,7 +359,8 @@ public:
                       << laserCloudIn->points.back().time
                       << ", " << laserCloudIn->points.size() << std::endl;
         }
-
+	vector<int> indices;
+        pcl::removeNaNFromPointCloud(*laserCloudIn, *laserCloudIn, indices);
         // check dense flag
         if (laserCloudIn->is_dense == false) {
             ROS_ERROR("Point cloud is not in dense format, please remove NaN points first!");
@@ -350,7 +387,7 @@ public:
         if (deskewFlag == 0) {
             deskewFlag = -1;
             for (auto &field : currentCloudMsg.fields) {
-                if (field.name == "time" || field.name == "t" || field.name == "timestamp") {
+                if (field.name == "time" || field.name == "t" || field.name == "timestamp" || field.name == "timestampSec") {
                     deskewFlag = 1;
                     break;
                 }
@@ -638,7 +675,17 @@ public:
             } else if (sensor == SensorType::LIVOX) {
                 columnIdn = columnIdnCountVec[rowIdn];
                 columnIdnCountVec[rowIdn] += 1;
+            } else if (sensor == SensorType::VELODYNE_M1600) {
+                
+                float horizonAngle = atan2(thisPoint.x, thisPoint.y) * 180 / M_PI;
+                
+                float ang_res_x = 0.29; // or 0.33 for the extended model, as per the specifications
+                
+                columnIdn = round((horizonAngle / ang_res_x) + (Horizon_SCAN / 2));
+                if (columnIdn >= Horizon_SCAN)
+                    columnIdn -= Horizon_SCAN;
             }
+
 
             if (columnIdn < 0 || columnIdn >= Horizon_SCAN)
                 continue;
@@ -647,7 +694,6 @@ public:
                 continue;
 
             thisPoint = deskewPoint(&thisPoint, laserCloudIn->points[i].time);
-
             rangeMat.at<float>(rowIdn, columnIdn) = range;
 
             int index = columnIdn + rowIdn * Horizon_SCAN;
@@ -678,6 +724,7 @@ public:
     }
 
     void publishClouds() {
+
         cloudInfo.header = cloudHeader;
         cloudInfo.cloud_deskewed = publishCloud(pubExtractedCloud, extractedCloud, cloudHeader.stamp, lidarFrame);
         pubLaserCloudInfo.publish(cloudInfo);

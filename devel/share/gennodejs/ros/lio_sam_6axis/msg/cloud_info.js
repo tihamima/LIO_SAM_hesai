@@ -1,1 +1,0 @@
-/home/tihami/LIO_SAM_hesai/devel/.private/lio_sam_6axis/share/gennodejs/ros/lio_sam_6axis/msg/cloud_info.js

@@ -1,1 +1,0 @@
-/home/tihami/LIO_SAM_hesai/devel/.private/lio_sam_6axis/share/common-lisp/ros/lio_sam_6axis/srv/save_map.lisp

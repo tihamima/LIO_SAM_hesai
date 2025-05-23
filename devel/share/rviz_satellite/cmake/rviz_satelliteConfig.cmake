@@ -1,1 +1,0 @@
-/home/tihami/LIO_SAM_hesai/devel/.private/rviz_satellite/share/rviz_satellite/cmake/rviz_satelliteConfig.cmake

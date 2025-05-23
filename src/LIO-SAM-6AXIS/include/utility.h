@@ -61,7 +61,7 @@ using namespace std;
 typedef pcl::PointXYZI PointType;
 
 enum class SensorType {
-    VELODYNE, OUSTER, LIVOX, HESAI
+    VELODYNE, OUSTER, LIVOX, HESAI, VELODYNE_M1600
 };
 
 class ParamServer {

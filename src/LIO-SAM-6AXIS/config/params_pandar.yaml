@@ -22,8 +22,8 @@ lio_sam_6axis:
 
   # Export settings
   savePCD: false                              # https://github.com/TixiaoShan/LIO-SAM/issues/3
-  savePCDDirectory: "/Download"        # in your home folder, starts and ends with "/". Warning: the code deletes "LOAM" folder then recreates it. See "mapOptimization" for implementation
-  scene_name: "exp04"
+  savePCDDirectory: "/home/tihami/LIO_SAM_hesai/src/LIO-SAM-6AXIS/data/"        # in your home folder, starts and ends with "/". Warning: the code deletes "LOAM" folder then recreates it. See "mapOptimization" for implementation
+  scene_name: "hesai"
 
   #   Sensor Settings
   sensor: hesai                            # lidar sensor type, 'velodyne' or 'ouster' or 'livox'
@@ -85,46 +85,41 @@ lio_sam_6axis:
   imuGyrBiasN: 0.005235  # 0.3 * (π/180)
   imuAccBias_N: [2.45e-05, 2.45e-05, 2.45e-05]
   imuGyrBias_N: [0.005235, 0.005235, 0.005235]
-  #  # Extrinsics (lidar -> IMU)
-  # extrinsicTrans: [ -0.00695046499029016, -0.006713481609220226, 0.04989346097032105 ]
 
-  # extrinsicRot: [ 0.006609639848469359, -0.999976224957192, 0.001965243352927243,
-  #              -0.9999773650294641, -0.006612093869054185, -0.001244846735961018,
-  #               0.001257811513201671, -0.001956970881110609, -0.9999972940839227]
-  # extrinsicRPY: [1, 0, 0,
-  #               0, 1, 0,
-  #               0, 0, -1]
-
-
+  #IMU (FRD) → LiDAR (LBU) 
+  # extrinsicTrans: [ -0.001,  -0.003,  -0.064 ]
+  # extrinsicRot: [0, -1,  0,
+  #              -1, 0,  0,
+  #              0,  0, -1]
+  # extrinsicRPY: [ 0,  -1, 0,
+  #              -1,  0, 0,
+  #               0,  0, -1]
+  
+  imuType: 0   # 0: 6axis, 1:9 axis
+  
   # extrinsic Imu  --> rep105
-  extrinsicTrans: [ -0.003, -0.001, -0.064 ]
+  # working
+  extrinsicTrans: [ 0.003, -0.001, -0.064 ]
 
   extrinsicRot: [1,  0,  0,
                0, -1,  0,
                0,  0, -1]
-
   extrinsicRPY: [ 0,  1, 0,
                -1,  0, 0,
                 0,  0, 1]
 
+
+  #when i consider the lidar has already been set to rep105, it is not working
+  # extrinsicRot: [1,  0,  0,
+  #              0, 1,  0,
+  #              0,  0, 1]
   # extrinsicRPY: [ 0,  1, 0,
   #              -1,  0, 0,
   #               0,  0, 1]
-  
-  # extrinsicRot: [ 0, -1, 0,
-  #                 -1, 0, 0,
-  #                 0, 0, -1 ]                  
-  # extrinsicRPY: [ 0, -1, 0,
-  #                 1, 0, 0,
-  #                 0, 0, -1 ]
-
-  # extrinsicTrans:  [−0.003,  −0.001,  −0.064]  # m
-  # extrinsicRot: [-1, 0, 0,
-  #                 0, 1, 0,
-  #                 0, 0, -1]
-  # extrinsicRPY: [0,  1, 0,
-  #                -1, 0, 0,
-  #                 0, 0, 1]
+  #CETTE VALEUR EST MAUVAISE
+  # extrinsicRPY: [1,  0,  0,
+  #               0, -1,  0,
+  #               0,  0, -1]
   # LOAM feature threshold
   edgeThreshold: 1.0
   surfThreshold: 0.1

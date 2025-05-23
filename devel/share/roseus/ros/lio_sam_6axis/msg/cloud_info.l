@@ -1,1 +1,0 @@
-/home/tihami/LIO_SAM_hesai/devel/.private/lio_sam_6axis/share/roseus/ros/lio_sam_6axis/msg/cloud_info.l
