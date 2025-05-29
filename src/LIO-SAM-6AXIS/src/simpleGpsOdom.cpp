@@ -17,7 +17,7 @@
 
 class GNSSOdom : public ParamServer {
  public:
-  GNSSOdom(ros::NodeHandle &_nh) {
+  GNSSOdom(ros::NodeHandle &_nh) : prevPos(Eigen::Vector3d::Zero()){
     nh = _nh;
     gpsSub = nh.subscribe(gpsTopic, 100, &GNSSOdom::GNSSCB, this,
                           ros::TransportHints().tcpNoDelay());
@@ -35,10 +35,9 @@ class GNSSOdom : public ParamServer {
     }
     double gps_time = msg->header.stamp.toSec();
     Eigen::Vector3d lla(msg->latitude, msg->longitude, msg->altitude);
-    std::cout << "LLA: " << lla.transpose() << std::endl;
+    // std::cout << "LLA: " << lla.transpose() << std::endl;
     if (!initXyz) {
-      ROS_INFO("Init Orgin GPS LLA  %f, %f, %f", msg->latitude, msg->longitude,
-               msg->altitude);
+      ROS_INFO("Init Orgin GPS LLA  %.10f, %.10f, %.3f", msg->latitude, msg->longitude, msg->altitude, gps_time);
       gtools.lla_origin_ = lla;
       initXyz = true;
       return;
@@ -47,7 +46,7 @@ class GNSSOdom : public ParamServer {
     //  convert  LLA to XYZ
     Eigen::Vector3d ecef = gtools.LLA2ECEF(lla);
     Eigen::Vector3d enu = gtools.ECEF2ENU(ecef);
-    ROS_INFO("GPS ENU XYZ : %f, %f, %f", enu(0), enu(1), enu(2));
+    // ROS_INFO("GPS ENU XYZ : %f, %f, %f", enu(0), enu(1), enu(2));
 
     // sometimes you may get a wrong origin at the beginning
     if (abs(enu.x()) > 10000 || abs(enu.x()) > 10000 || abs(enu.x()) > 10000) {
@@ -59,10 +58,12 @@ class GNSSOdom : public ParamServer {
     // maybe you need to get the extrinsics between your gnss and imu
     // most of the time, they are in the same frame
     Eigen::Vector3d calib_enu = enu;
+    // ROS_INFO("prevpos : %f, %f, %f", prevPos(0), prevPos(1), prevPos(2));
+    double distance = sqrt(pow(enu(1) - prevPos(1), 2) + pow(enu(0) - prevPos(0), 2));
+    
+    // ROS_INFO("distance : %f", distance);
+    if (distance > 0.01) {
 
-    double distance =
-        sqrt(pow(enu(1) - prevPos(1), 2) + pow(enu(0) - prevPos(0), 2));
-    if (distance > 0.1) {
       // 返回值是此点与远点连线与x轴正方向的夹角
       yaw = atan2(enu(1) - prevPos(1), enu(0) - prevPos(0));
       yawQuat = tf::createQuaternionMsgFromYaw(yaw);
@@ -76,7 +77,7 @@ class GNSSOdom : public ParamServer {
         ResetOrigin(lla);
         prevYaw = yaw;
       }
-      ROS_INFO("gps yaw : %f", yaw);
+      //ROS_INFO("gps yaw : %f", yaw);
     } else {
       orientationReady_ = false;
       return;
@@ -119,6 +120,11 @@ class GNSSOdom : public ParamServer {
     //    }
     gpsOdomPub.publish(odom_msg);
 
+
+    // ROS_INFO("Igps odo pub timestamp  %f", odom_msg.header.stamp.toSec());
+
+
+
     // publish path
     rospath.header.frame_id = odometryFrame;
     rospath.header.stamp = msg->header.stamp;
@@ -135,7 +141,9 @@ class GNSSOdom : public ParamServer {
     fusedPathPub.publish(rospath);
   }
 
-  void ResetOrigin(Eigen::Vector3d &_lla) { gtools.lla_origin_ = _lla; }
+  void ResetOrigin(Eigen::Vector3d &_lla) { 
+    gtools.lla_origin_ = _lla; 
+  }
 
   ros::NodeHandle nh;
   GpsTools gtools;

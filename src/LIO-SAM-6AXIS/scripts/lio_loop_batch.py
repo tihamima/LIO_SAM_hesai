@@ -6,7 +6,7 @@ import argparse
 import yaml
 
 plat_data_pair_list = [
-    ('hkust', 'campus')
+    ('hkust2', 'campus2s')
     # ('hkust', 'campus_day_ouster128')
     # ('hilti', 'exp01'),
     # ('hilti', 'exp02'),
@@ -20,7 +20,7 @@ plat_data_pair_list = [
     # ('hilti', 'exp21')
 ]
 
-bag_path_download = '/home/tihami/Downloads/LIO_SAM_walking_datasets/'
+bag_path_download = '/home/tihami/Downloads/hkust/'
 bag_path_list = [
     bag_path_download + 'hkust_20201105full_correct2.bag'
     # bag_path_download + '20220226_campus_road_day_ref.bag'

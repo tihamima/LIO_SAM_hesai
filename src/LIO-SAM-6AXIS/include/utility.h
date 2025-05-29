@@ -187,11 +187,13 @@ public:
         nh.param<std::string>("/robot_id", robot_id, "roboat");
 
         nh.param<std::string>("lio_sam_6axis/pointCloudTopic", pointCloudTopic, "points_raw");
+
+
         nh.param<std::string>("lio_sam_6axis/imuTopic", imuTopic, "imu_correct");
         nh.param<std::string>("lio_sam_6axis/odomTopic", odomTopic, "odometry/imu");
         nh.param<std::string>("lio_sam_6axis/gpsTopic", gpsTopic, "fix");
 
-        nh.param<std::string>("lio_sam_6axis/lidarFrame", lidarFrame, "base_link");
+        nh.param<std::string>("lio_sam_6axis/lidarFrame", lidarFrame, "base_link2");
         nh.param<std::string>("lio_sam_6axis/baselinkFrame", baselinkFrame, "base_link");
         nh.param<std::string>("lio_sam_6axis/odometryFrame", odometryFrame, "odom");
         nh.param<std::string>("lio_sam_6axis/mapFrame", mapFrame, "map");
@@ -210,6 +212,8 @@ public:
         nh.param<bool>("lio_sam_6axis/debugGps", debugGps, false);
 
         nh.param<bool>("lio_sam_6axis/savePCD", savePCD, false);
+
+        
         nh.param<std::string>("lio_sam_6axis/savePCDDirectory", savePCDDirectory, "/Downloads/LOAM/");
         nh.param<std::string>("saveDirectory", saveDirectory, "/Downloads/LOAM/");
         nh.param<std::string>("sequence", sequence, "map");
@@ -235,6 +239,9 @@ public:
 
         nh.param<int>("lio_sam_6axis/N_SCAN", N_SCAN, 16);
         nh.param<int>("lio_sam_6axis/Horizon_SCAN", Horizon_SCAN, 1800);
+
+
+
         nh.param<int>("lio_sam_6axis/downsampleRate", downsampleRate, 1);
         nh.param<float>("lio_sam_6axis/lidarMinRange", lidarMinRange, 1.0);
         nh.param<float>("lio_sam_6axis/lidarMaxRange", lidarMaxRange, 1000.0);
