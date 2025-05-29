@@ -1,0 +1,62 @@
+<launch>
+    <arg name="project" default="lio_sam_6axis"/>
+    <!-- <arg name="bag_path" default="/media/tihami/05150P129/bag/OnFootAcquisition2OutsideInside/merged_OnFootAcquisition2OutsideInside.bag"/> -->
+    <!-- <arg name="bag_path" default="/media/tihami/05150P129/bag/OnFootAcquisition1Outside/merged_OnFootAcquisition1Outside.bag"/>  -->
+    <!-- <arg name="bag_path" default="/media/tihami/05150P129/bag/Cycle_250507_155315_136SN999/merged_Cycle_250507_155315_136SN999.bag"/> -->
+    <arg name="bag_path" default="/home/tihami/Downloads/outsideNew/merged_outside.bag"/>
+
+    <!-- <arg name="bag_path" default="/home/tihami/Downloads/LIO_SAM_walking_datasets/hkust_20201105full_correct2.bag"/> -->
+    <!-- <arg name="sequence" default="my_sequence"/> -->
+    <arg name="sequence" default="Outside"/>
+    <!-- <arg name="sequence" default="OnFootAcquisition2OutsideInside"/> -->
+    <!-- <arg name="sequence" default=" Cycle_250507_155315_136SN999"/> -->
+    <!-- <arg name="sequence" default="Cycle_250512_114517_136SN999"/> -->
+
+
+    <!--set your own Parameters -->
+    <!--    <rosparam file="$(find lio_sam_6axis)/config/params_ouster.yaml" command="load"/>-->
+    <rosparam file="$(find lio_sam_6axis)/config/gnss.yaml" command="load"/>
+    <param name ="use_sim_time" value="true"/>
+    
+    <!--- LOAM -->
+    <param name="saveDirectory" type="string" value="$(find lio_sam_6axis)/data/"/>
+    <param name="configDirectory" type="string" value="$(find lio_sam_6axis)/config/"/>
+    <rosparam param="sequence" subst_value="true">$(arg sequence)</rosparam>
+    <include file="$(find lio_sam_6axis)/launch/include/module_loam.launch"/>
+
+    <!--- Robot State TF -->
+    <include file="$(find lio_sam_6axis)/launch/include/module_robot_state_publisher.launch"/>
+
+    <!--show satellite outside-->
+    <!--set your orgin gps lla  22.3387279108228 114.263622199692 87.7310562180355 -->
+    <node pkg="rostopic" type="rostopic" name="fake_gps_fix"
+          args="pub gps/fix sensor_msgs/NavSatFix '{ header: auto, latitude: 34.582724652, longitude: -86.739468989, altitude:  159.2183}'"
+          output="screen"/>
+
+    <!--show satellite inside-->
+    <!-- <node pkg="rostopic" type="rostopic" name="fake_gps_fix"
+          args="pub gps/fix sensor_msgs/NavSatFix '{ header: auto, latitude: 34.582717655, longitude: -86.739463747, altitude:  158.6764}'"
+          output="screen"/> -->
+
+    <!-- show satellite 155315 -->
+    <!-- <node pkg="rostopic" type="rostopic" name="fake_gps_fix"
+          args="pub gps/fix sensor_msgs/NavSatFix '{ header: auto, latitude: 34.58279918, longitude: -86.738703719, altitude:  159.7679}'"
+          output="screen"/> -->
+
+    <!--show satellite 114517-->
+    <!-- <node pkg="rostopic" type="rostopic" name="fake_gps_fix"
+          args="pub gps/fix sensor_msgs/NavSatFix '{ header: auto, latitude: 34.582698323, longitude: -86.739465003, altitude:  162.3221}'"
+          output="screen"/> -->
+
+    <!--- Run Navsat -->
+    <node pkg="lio_sam_6axis" type="lio_sam_6axis_gpsOdometry" name="lio_sam_6axis_gpsOdometry" output="screen"/>
+
+    <!--- Run Rviz-->
+    <node pkg="rviz" type="rviz" name="$(arg project)_rviz"
+          args="-d $(find lio_sam_6axis)/launch/include/config/vlp.rviz"/>
+
+    <node pkg="rosbag" type="play" name="bag_play" args="$(arg bag_path) --clock -d 5 -r 1.0"/>
+
+</launch>
+
+

@@ -384,8 +384,16 @@ class mapOptimization : public ParamServer {
   }
 
   void gpsHandler(const nav_msgs::Odometry::ConstPtr &gpsMsg) {
+    // ROS_INFO("est ce que tu rentres ?? %d", useGPS);
+
     if (useGPS) {
       mtxGpsInfo.lock();
+
+      // ROS_INFO("sub gps temps %f",gpsMsg->header.stamp.toSec());
+      // ROS_INFO("gps msg x %f", gpsMsg->pose.pose.position.x);
+      // ROS_INFO("gps msg y %f", gpsMsg->pose.pose.position.y);
+      // ROS_INFO("gps msg z %f", gpsMsg->pose.pose.position.z);
+
       gpsQueue.push_back(*gpsMsg);
       mtxGpsInfo.unlock();
     }
@@ -533,8 +541,8 @@ class mapOptimization : public ParamServer {
       dataSaverPtr->saveOriginGPS(optimized_lla);
     }
     // update origin gps point
-    gpsTools.lla_origin_ = optimized_lla;
-
+    gpsTools.lla_origin_ = optimized_lla; /* manual values */
+    // gpsTools.lla_origin_ = Eigen::Vector3d(34.5827176550, -86.7394637470, 158.676);
 
     mtx.lock();
     vector<pcl::PointCloud<PointType>::Ptr> keyframePc;
@@ -609,7 +617,10 @@ class mapOptimization : public ParamServer {
     dataSaverPtr->saveOptimizedVerticesKITTI(isamCurrentEstimate);
     dataSaverPtr->saveOdometryVerticesTUM(keyframeRawOdom);
     dataSaverPtr->saveResultBag(keyframePosesOdom, keyframeCloudDeskewed, transform_vec);
-    if (useGPS) dataSaverPtr->saveKMLTrajectory(lla_vec);
+    if (useGPS) 
+      ROS_INFO(lla_vec.size() > 0 ? "GPS data is available!" : "No GPS data available!");
+      dataSaverPtr->saveKMLTrajectory(lla_vec);
+      ROS_INFO("save  KLM map to bag file completed!!");
 
     pcl::PointCloud<PointType>::Ptr globalCornerCloud(
         new pcl::PointCloud<PointType>());
@@ -677,7 +688,7 @@ class mapOptimization : public ParamServer {
     // laserCloudRawKeyFrames);
 
     cout << "****************************************************" << endl;
-    cout << "Saving map to pcd files completed: " << endl;
+    cout << "Saving map to pcd files completed??: " << endl;
 
     return true;
   }
@@ -1203,6 +1214,10 @@ class mapOptimization : public ParamServer {
           float noise_y = alignedGPS.pose.covariance[7];
           float noise_z = alignedGPS.pose.covariance[14];
 
+          // float noise_x = 1000.0;
+          // float noise_y = 1000.0;
+          // float noise_z = 1500.0;
+
           gtsam::Vector Vector3(3);
           Vector3 << noise_x, noise_y, noise_z;
           noiseModel::Diagonal::shared_ptr gps_noise =
@@ -1216,6 +1231,9 @@ class mapOptimization : public ParamServer {
           transformTobeMapped[0] = cloudInfo.imuRollInit;
           transformTobeMapped[1] = cloudInfo.imuPitchInit;
           transformTobeMapped[2] = cloudInfo.imuYawInit;
+
+
+
           if (!useImuHeadingInitialization) transformTobeMapped[2] = 0;
           lastImuTransformation = pcl::getTransformation(
               0, 0, 0, cloudInfo.imuRollInit, cloudInfo.imuPitchInit,
@@ -1241,7 +1259,10 @@ class mapOptimization : public ParamServer {
     }
 
     if (!systemInitialized) {
-      ROS_ERROR("sysyem need to be initialized");
+      ROS_ERROR("gpsQueue %d", gpsQueue.size());
+      // ROS_ERROR("msg time interval {%f, %f}", gpsQueue.front().header.stamp.toSec(), gpsQueue.back().header.stamp.toSec());
+      // ROS_ERROR("system need to be initialized");
+      // ROS_ERROR("timeLaserInfoCur %f",timeLaserInfoCur);
       return;
     }
 
@@ -1916,6 +1937,7 @@ class mapOptimization : public ParamServer {
     // last gps position
     static PointType lastGPSPoint;
     nav_msgs::Odometry thisGPS;
+
     if (syncGPS(gpsQueue, thisGPS, timeLaserInfoCur, 1.0 / gpsFrequence)) {
       // GPS too noisy, skip
       float noise_x = thisGPS.pose.covariance[0];

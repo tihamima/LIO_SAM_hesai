@@ -260,6 +260,7 @@ public:
     }
 
     void cloudHandler(const sensor_msgs::PointCloud2ConstPtr &laserCloudMsg) {
+        
         if (!cachePointCloud(laserCloudMsg))
             return;
 
